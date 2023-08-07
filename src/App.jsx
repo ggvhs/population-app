@@ -32,9 +32,9 @@ function App() {
     }
   }
 
-  useEffect(() =>{
-    getCity('Detroit')
-  },[])
+  // useEffect(() =>{
+  //   getCity('Detroit')
+  // },[])
   
 
   return (

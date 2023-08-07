@@ -21,8 +21,7 @@ function App() {
 
   const getCity =async (searchCityTerm) => {
     try{
-      const response = await fetch(`https://spott.p.rapidapi.com/places?apikey=${APIKEY}&q=${searchCityTerm}`)
-      //'https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=10&q=New%20York';
+      const response = await fetch(url,options)
       const city = await response.json();
       console.log(city)
       setCity(city)

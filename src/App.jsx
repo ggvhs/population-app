@@ -2,45 +2,50 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import Form from "./components/Form"
 import './styles.css'
+import CityDisplay from './components/CityDisplay'
 
 
 function App() {
-  const APIKEY = import.meta.env.VITE_API_KEY;
+  const [cityData, setCityData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const [city,setCity] = useState(null) 
+  useEffect(() => {
+    const fetchCityData = async () => {
+      const APIKEY = import.meta.env.VITE_API_KEY;
+      const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=1&q=${searchTerm}`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': APIKEY,
+          'X-RapidAPI-Host': 'spott.p.rapidapi.com',
+        },
+      };
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        setCityData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=1&q=${city}`;
-  const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': APIKEY,
-		'X-RapidAPI-Host': 'spott.p.rapidapi.com'
-	}
-};
-
-  const getCity =async (searchCityTerm) => {
-    try{
-      const response = await fetch(url,options)
-      const city = await response.json();
-      console.log(city)
-      setCity(city)
-
-
-    } catch (error){
-      console.log(error)
-    }
+    if (searchTerm){
+    fetchCityData();
   }
-
-  // useEffect(() =>{
-  //   getCity('Detroit')
-  // },[])
-  
+  }, [searchTerm]);
 
   return (
     <div>
-      <Form citySearch={getCity} ></Form>
+      <Form setSearchTerm={setSearchTerm} />
+      <CityDisplay cityData={cityData} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+
+
+
+
+
+

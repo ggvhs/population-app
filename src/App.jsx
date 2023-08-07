@@ -9,7 +9,7 @@ function App() {
 
   const [city,setCity] = useState(null) 
 
-  const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=10&q=${city}`;
+  const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=1&q=${city}`;
   const options = {
 	method: 'GET',
 	headers: {

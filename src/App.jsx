@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Form from "./components/Form"
 import MovieDisplay from "./components/CityDisplay"
 import './styles.css'
+import CityDisplay from './components/CityDisplay'
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
 
   return (
     <div>
+      <Form citySearch={getCity} ></Form>
+      <CityDisplay city={city} />
 
     </div>
   )

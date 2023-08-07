@@ -1,13 +1,13 @@
 import React from 'react'
 import '../styles.css'
-import Form from './Form';
 
-function CityDisplay({city}) {
+
+function CityDisplay({cityData}) {
     const loaded = () =>{
        
   return (
     <div>
-        {city.map((city,index)=> (
+        {cityData.map((city,index)=> (
             <div key={index}>
               <h1 >{city.type}</h1>
               <h1 >{city.name}</h1>
@@ -25,7 +25,7 @@ const loading = () =>{
 }
 
 
-return city? loaded() : loading ()
+return cityData? loaded() : loading ()
 }
 
 

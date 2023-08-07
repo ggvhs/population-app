@@ -43,7 +43,7 @@ function Form() {
         <input type="text" onChange={handleChange} />
         <button onClick={handleSubmit}>Search</button>
       </form>
-      <CityDisplay city={cityData} />
+      <CityDisplay cityData={cityData} />
     </div>
   );
 }

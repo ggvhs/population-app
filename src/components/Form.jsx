@@ -1,8 +1,35 @@
 import React from 'react'
 import {useState} from 'react'
 import '../styles.css'
+import CityDisplay from './CityDisplay';
 
-function Form({citySearch}) {
+function Form() {
+
+    const APIKEY = import.meta.env.VITE_API_KEY;
+
+    const [city,setCity] = useState(null) 
+  
+    const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=10&q=${city}`;
+    const options = {
+      method: 'GET',
+      headers: {
+          'X-RapidAPI-Key': APIKEY,
+          'X-RapidAPI-Host': 'spott.p.rapidapi.com'
+      }
+  };
+  
+    const citySearch =async () => {
+      try{
+        const response = await fetch(url,options)
+        const city = await response.json();
+        console.log(city)
+        setCity(city)
+  
+  
+      } catch (error){
+        console.log(error)
+      }
+    }
 
     const [form , setForm] = useState({
         searchTerm: '',
@@ -10,22 +37,23 @@ function Form({citySearch}) {
 
     const handleChange = (e) =>{
         console.log(e.target.value)
-        setForm({
-            ...Form,
-            searchTerm : e.target.value
-        })
+        setCity(e.target.value)
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        movieSearch(form.searchTerm);
+        citySearch(city);
     }
 
   return (
-    <form onSubmit={handleSubmit} >
-        <input type="text" value={form.searchTerm} onChange={handleChange} />
-        <input type="submit" value="SUBMIT" />
+    <div>
+    <form  >
+        <input type="text"  onChange={handleChange} />
+        <button onClick={handleSubmit}>Search</button>
     </form>
+    {/* <CityDisplay city={city}/> */}
+    </div>
+
   )
 }
 

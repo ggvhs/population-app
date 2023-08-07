@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Form from "./components/Form"
-import MovieDisplay from "./components/CityDisplay"
 import './styles.css'
 import CityDisplay from './components/CityDisplay'
 
@@ -11,7 +10,7 @@ function App() {
 
   const [city,setCity] = useState(null) 
 
-  const url = 'https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=10&q=New%20York';
+  const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=10&q=${city}`;
   const options = {
 	method: 'GET',
 	headers: {

@@ -16,6 +16,7 @@ function App() {
     const fetchCityData = async () => {
       const APIKEY = import.meta.env.VITE_API_KEY;
 
+      //url that specifies users search term
       const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=1&q=${searchTerm}`;
       
       const options = {
@@ -26,7 +27,7 @@ function App() {
         },
       };
 
-
+      //try catch block given  my url and options that hold my API key
       try {
         const response = await fetch(url, options);
         const data = await response.json();
@@ -41,6 +42,9 @@ function App() {
   }
   }, [searchTerm]);
 
+
+  //Passing props to my form and city display components
+  //In this instaciation I am passing the function set search term to Form
   return (
     <div>
       <Form setSearchTerm={setSearchTerm} />

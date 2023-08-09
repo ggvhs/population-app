@@ -39,10 +39,10 @@ function Form() {
   };
 
   return (
-    <div>
-      <form>
-        <input type="text" onChange={handleChange} />
-        <button onClick={handleSubmit}>Search</button>
+    <div className='container'>
+      <form className='form'>
+        <input type="text" onChange={handleChange} className='input' />
+        <button onClick={handleSubmit} className='button'>Search</button>
       </form>
       <CityDisplay cityData={cityData} />
     </div>

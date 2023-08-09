@@ -9,10 +9,29 @@
 
 textarea:focus ,input:focus{
     outline: none;
+    border: none;
 }
 
-input,button{
-
+button{
+    border: none;
     outline: none;
 
+}
+
+input{
+    border: 1.5px dotted grey;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.centered-form{
+    display: grid;
+    gap:50px;
+    padding: 20px;
+    border-radius: 8px;
 }

@@ -9,6 +9,7 @@ function Form() {
   const [cityData, setCityData] = useState(null);
 
   const url = `https://spott.p.rapidapi.com/places?type=CITY&skip=0&country=US%2CCA&limit=1&q=${searchTerm}`;
+
   const options = {
     method: 'GET',
     headers: {

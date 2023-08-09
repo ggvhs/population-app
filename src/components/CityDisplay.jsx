@@ -2,6 +2,8 @@ import React from 'react'
 import '../styles.css'
 
 
+
+
 function CityDisplay({cityData}) {
     const loaded = () =>{
        
@@ -25,6 +27,7 @@ const loading = () =>{
 }
 
 
+//Turnary Operator 
 return cityData? loaded() : loading ()
 }
 

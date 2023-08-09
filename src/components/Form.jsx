@@ -44,7 +44,7 @@ function Form() {
         <input type="text" onChange={handleChange} className='input' />
         <button onClick={handleSubmit} className='button'>Search</button>
       </form>
-      <CityDisplay cityData={cityData} />
+      <CityDisplay cityData={cityData} className='city-display'/>
     </div>
   );
 }

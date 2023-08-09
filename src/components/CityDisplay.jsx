@@ -11,9 +11,9 @@ function CityDisplay({cityData}) {
     <div>
         {cityData.map((cityObject,index)=> (
             <div key={index}>
-              <h1 >{cityObject.type}</h1>
-              <h1 >{cityObject.name}</h1>
-              <h1 >{cityObject.population}</h1>
+              {/* <h1 >{cityObject.type}</h1> */}
+              <h1 >City: {cityObject.name}</h1>
+              <h1 >Population: {cityObject.population}</h1>
               </div>
         ))}
   

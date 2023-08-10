@@ -1,51 +1,54 @@
-import React, {useRef, useEffect} from 'react';
-import * as THREE from 'three'
-
-const CubeScene = () =>{
+import React, { useRef, useEffect } from 'react';
+import * as THREE from 'three';
 
 
+const CubeScene = () => {
+  const sceneRef = useRef();
+  const rendererRef = useRef();
+  const requestIdRef = useRef();
 
+  useEffect(() => {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+    camera.position.x = 2;
+    camera.position.y =0;
 
-    const sceneRef= useRef()
-    const rendererRef = useRef()
-    const cubeRef = useRef()
-    const requestIdRef = useRef()
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
+    // Remove previous renderer's DOM element if it exists
+    if (rendererRef.current) {
+      const previousDomElement = rendererRef.current.domElement;
+      if (previousDomElement.parentNode) {
+        previousDomElement.parentNode.removeChild(previousDomElement);
+      }
+    }
 
-    useEffect(() => {
-        // Scene , camera , and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth , window.innerHeight, 0.1,100)
-        camera.position.z = 5;
+    // Append the new renderer's DOM element to the sceneRef's div
+    sceneRef.current.appendChild(renderer.domElement);
+    rendererRef.current = renderer;
 
-        const renderer = new THREE.WebGL1Renderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        rendererRef.current = renderer;
-        sceneRef.current.appendChild(renderer.domElement);
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0xdb934b });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
 
+    const animate = () => {
+      cube.rotation.y += 0.01;
 
-        const geometry= new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial()
-        const cube = new THREE.Mesh(geometry,material);
-        scene.add(cube);
-        cubeRef.current = cube;
+      renderer.render(scene, camera);
+      requestIdRef.current = requestAnimationFrame(animate);
+    };
 
+    animate();
 
-        const animate = () => {
-            cube.rotation.x += 0.01
+    return () => {
+      cancelAnimationFrame(requestIdRef.current);
+    };
+  }, []);
 
-            renderer.render(scene,camera);
-            requestIdRef.current = requestAnimationFrame(animate);
-        };
-
-        animate();
-
-        return () =>{
-            cancelAnimationFrame(requestIdRef.current);
-        };
-    }, []);
-
-    return <div ref={sceneRef}/>
-}
+  return <div ref={sceneRef} />;
+};
 
 export default CubeScene;

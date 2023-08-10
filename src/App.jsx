@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import Form from "./components/Form"
 import './styles.css'
 import CityDisplay from './components/CityDisplay'
-
+import CubeScene from './components/CubeScene'
 
 function App() {
   //Two use states to Dynamically change my data and serch term
@@ -49,6 +49,7 @@ function App() {
     <div>
       <Form setSearchTerm={setSearchTerm} />
       <CityDisplay cityData={cityData} />
+      <CubeScene className=""/>
     </div>
   );
 }

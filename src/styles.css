@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    color: rgb(214, 209, 198);
+    color: #db934b;
     background-color: black;
     font-weight: bold;
     text-align: center;
@@ -10,7 +10,7 @@
 
 textarea:focus ,input:focus{
     outline: none;
-    border: 1.5px dotted  rgb(214, 214, 214);
+    border: 1.5px dotted  #db934b;
 }
 
 button{
@@ -23,12 +23,22 @@ input{
     border: 1.5px dotted grey;
 }
 
-.container {
-    /* display: grid;
-    place-items: center; */
+/* .container {
+     display: grid;
+    place-items: center; 
+
+    
      position: absolute;
     top: 50%;
     left: 40%; 
-} 
+}  */
 
+.container{
+    margin:0;
+    padding: 0;
+    position: absolute;
+    top:40%;
+    left: 60%;
+    
+}
 

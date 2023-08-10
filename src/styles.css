@@ -24,18 +24,11 @@ input{
 }
 
 .container {
-    display: grid;
-    place-items: center;
-}
+    /* display: grid;
+    place-items: center; */
+     position: absolute;
+    top: 50%;
+    left: 40%; 
+} 
 
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    gap: 10px;
-    padding-top: 200px;
-    
-
-    justify-content: center;
-}
 

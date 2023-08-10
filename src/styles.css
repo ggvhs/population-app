@@ -21,6 +21,7 @@ button{
 
 input{
     border: 1.5px dotted grey;
+    margin-right: 10px;
 }
 
 /* .container {

@@ -14,6 +14,7 @@ function CityDisplay({cityData}) {
               {/* <h1 >{cityObject.type}</h1> */}
               <h1 >City: {cityObject.name}</h1>
               <h1 >Population: {cityObject.population}</h1>
+              <h1>State: {cityObject.adminDivision1.name}</h1>
               </div>
         ))}
   

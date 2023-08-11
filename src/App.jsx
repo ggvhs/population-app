@@ -50,8 +50,8 @@ function App() {
     <div>
       <Form setSearchTerm={setSearchTerm} />
       <CityDisplay cityData={cityData} />
-      {/* <Cube /> */}
-      <CubeScene className=""/>
+      <Cube />
+      {/* <CubeScene className=""/> */}
     </div>
   );
 }

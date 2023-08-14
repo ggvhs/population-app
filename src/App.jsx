@@ -4,7 +4,7 @@ import Form from "./components/Form"
 import './styles.css'
 import CityDisplay from './components/CityDisplay'
 import CubeScene from './components/CubeScene'
-import Cube from './components/Cube'
+import CubeDisplay from './components/CubeDisplay'
 
 function App() {
   //Two use states to Dynamically change my data and serch term
@@ -50,8 +50,8 @@ function App() {
     <div>
       <Form setSearchTerm={setSearchTerm} />
       <CityDisplay cityData={cityData} />
-      {/* <Cube /> */}
-      <CubeScene />
+      <CubeDisplay />
+      
     </div>
   );
 }
